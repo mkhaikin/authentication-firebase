@@ -20,7 +20,6 @@ const Signup = () => {
                 setError(err.message)
             }
         }
-    }
 
     return (
         <>

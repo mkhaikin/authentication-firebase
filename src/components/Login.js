@@ -8,21 +8,21 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
-    const {Login, googleSignIn } = useUserAuth()
+    const {LogIn, googleSignIn } = useUserAuth()
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
             e.preventDefault();
             setError("")
             try {
-                await Login(email, password)
+                await LogIn(email, password)
                 navigate("/home")
             } catch (err){
+                console.log("Error", err)
                 setError(err.message)
             }
         }
-    }
-
+    
     const handleGoogleSignIn = async (e) => {
         e.preventDefault();
 
@@ -76,5 +76,6 @@ const Login = () => {
             </div>
         </>
     )
+    
 }
 export default Login
