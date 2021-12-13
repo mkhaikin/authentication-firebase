@@ -8,7 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
-    const {LogIn, googleSignIn } = useUserAuth()
+    const {LogIn, googleSignIn, forgotPassword } = useUserAuth()
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -32,6 +32,11 @@ const Login = () => {
         } catch (err) {
             setError(err.message)
         }
+    }
+
+    const forgotPasswordHandler = () => {
+        if(email.length > 1) 
+            forgotPassword(email).then(() => (setEmail(""))) 
     }
 
     return (
@@ -71,6 +76,8 @@ const Login = () => {
                     />
                 </div>
             </div>
+            <a href='#' onClick={forgotPasswordHandler}>Forgot Password?</a>
+            
             <div className="p-4 box mt-3 text-center">
                 Don't have an account? <Link to="/signup">Sign up</Link>
             </div>
